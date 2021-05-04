@@ -7,15 +7,21 @@ function CreateArea(props) {
     content: ''
   });
 
-  const handleChange = () => {
-    console.log('button clicked!')
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    setNoteCard(prev => {
+      return {
+        ...prev,
+        [name]: value
+      }
+    })
   }
 
   return (
     <div>
       <form>
-        <input onChange={handleChange} name="title" placeholder="Title" />
-        <textarea name="content" placeholder="Take a note..." rows="3" />
+        <input value={noteCard.title} onChange={handleChange} name="title" placeholder="Title" />
+        <textarea value={noteCard.content} onChange={handleChange} name="content" placeholder="Take a note..." rows="3" />
         <button>Add</button>
       </form>
     </div>
